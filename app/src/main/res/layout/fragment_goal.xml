@@ -6,7 +6,12 @@
 	>
 
 	<data>
-
+		<variable
+			name="goals"
+			type="id.ac.polinema.skor.fragments.GoalFragment" />
+		<variable
+			name="scorer"
+			type="id.ac.polinema.skor.models.GoalScorer" />
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -43,9 +48,12 @@
 			android:id="@+id/input_name"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
 			android:ems="10"
+			android:text="@={scorer.name}"
 			android:inputType="textPersonName"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
 			app:layout_constraintStart_toStartOf="@+id/guideline2"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +62,7 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:ems="10"
+			android:text="@={`` + scorer.minute}"
 			android:inputType="numberSigned"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -66,7 +75,7 @@
 			android:layout_marginStart="8dp"
 			android:layout_marginEnd="8dp"
 			android:layout_marginBottom="8dp"
-			android:text="Save"
+			android:onClick="@{(v) -> goals.onSaveClicked(v)}"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="@+id/guideline3" />
@@ -78,7 +87,7 @@
 			android:layout_marginStart="8dp"
 			android:layout_marginEnd="8dp"
 			android:layout_marginBottom="8dp"
-			android:text="Cancel"
+			android:onClick="@{(v) -> goals.onCancelClicked(v)}"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/guideline3"
 			app:layout_constraintStart_toStartOf="parent" />
